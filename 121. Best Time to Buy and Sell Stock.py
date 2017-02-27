@@ -29,13 +29,13 @@ class Solution(object):
             pos += 1
         return (ans)
 
-# Second Approcah: DP
+# Second Approcah: 
 prices = [5,3,7,1,4,2]
-def maxProfitRec(state):
-    if state == -1:
-        return (0)
-    else:
-        print(max(0, prices[state] - prices[state-1]))
-        return (max(0, prices[state] - prices[state-1]) + maxProfitRec(state - 1))
+def maxProfit(prices):
+    max_profit, min_price = 0, float("inf")
+    for price in prices:
+        min_price = min(min_price, price)
+        max_profit = max(max_profit, price - min_price)
+    return max_profit
 
-maxProfitRec(len(prices) - 1)
+maxProfit(prices)
