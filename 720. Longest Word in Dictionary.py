@@ -121,4 +121,40 @@ for w in words:
 sorted(results)[0]
 
 
+# 使用循环+动态规划思想
+# sort过后，只有
+class Solution:
+    def longestWord(self, words: List[str]) -> str:
+        max_len = 0
+        s_words = sorted(words)
+        prefix_set = set()
+        result = ''
+        for s in s_words:
+            is_qualified = False
+            word_len = len(s)
+            if word_len == 1:
+                is_qualified = True
+                prefix_set.add(s)
+            else:
+                if s[:-1] in prefix_set:
+                    prefix_set.add(s)
+                    is_qualified = True
+            if is_qualified:
+                if word_len > max_len:
+                    result = s
+                    max_len = word_len
+        return result
+
+# 优化解法
+
+class Solution:
+    def longestWord(self, words: List[str]) -> str:
+        words.sort()
+        words_set, longest_word = set(['']), ''
+        for word in words:
+            if word[:-1] in words_set:
+                words_set.add(word)
+                if len(word) > len(longest_word):
+                    longest_word = word
+        return longest_word
 
