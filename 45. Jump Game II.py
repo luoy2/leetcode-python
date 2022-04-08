@@ -50,5 +50,3 @@ class Solution:
             idx -= 1
         return costs[0]
 
-
-self =
