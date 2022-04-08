@@ -65,6 +65,7 @@ for i, n in enumerate(nums[:-1]):
     p *= n
     ans.append(p)
 print(ans)
+'''
 # [1, 1, 2]
 这是nums每个左边部分的乘积
 1: 左边为1（因为没有）
@@ -80,7 +81,7 @@ print(ans)
 3： 2（左）*1（右）
 2： 1（左）* 3*1（右，上一步算好）
 1： 1（左）* 2*3（右，上一步算好）
-
+'''
 q = 1
 for i in range(len(nums)-1, -1, -1):
     ans[i] *= q
